@@ -8,7 +8,6 @@
       .message { font-size: 1.3em; font-weight: bold; }
 
     </style>
-
   </head>
 <body ng-app="LunchCheck">
    <div class="container" ng-controller="LunchCheckController">
@@ -27,18 +26,35 @@
          </div>
          <div class="form-group message" >
 
-          <!-- Optional Requirements :
-            If the message is "Enjoy!" or "Too much!", make the font color green. 
-            If the message is "Please enter data first", make the font color red.
-          -->
-          <div ng-style="messageStyle" > 
-          <!-- Messages are dipslayed here. --> 
-            {{ message }}
+            <!-- Optional Requirements :
+
+              Font Color:
+              If the message is "Enjoy!" or "Too much!", make the font color green. 
+              If the message is "Please enter data first", make the font color red.
+            
+              Border Color:
+              If the message is "Enjoy!" or "Too much!", make the border color around the textbox green. 
+              If the message is "Please enter data first", make the border color around the textbox red.
+            -->
+            <div ng-style="messageStyle" > 
+
+              <!--
+                Optional Requirement:  
+                  
+                Do not count empty items:
+                item1, item2, , item3
+                Should be 3 not 4 in this case.
+              -->
+
+              <!-- Messages are dipslayed here. --> 
+              
+              {{ message }}
+              
           </div>
         </div>
    </div>
+
    <script src="angular.min.js"></script>
    <script src="./app.js"></script>
-
 </body>
 </html>
