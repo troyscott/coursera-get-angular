@@ -12,8 +12,9 @@ function LunchCheckController($scope){
     $scope.lunchList = "";
     $scope.checkIfTooMuch = checkIfTooMuch;
 
+    // Check to see if the user ate too much
     function checkIfTooMuch() {
-        
+        // Get the user innput
         var list = $scope.lunchList;
         console.log(list);
         if (isValidEntry(list)) {
