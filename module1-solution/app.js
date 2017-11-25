@@ -17,8 +17,6 @@ function LunchCheckController($scope){
         var list = $scope.lunchList;
         console.log(list);
         if (isValidEntry(list)) {
-            console.log(itemCount(list));
-
             if (itemCount(list) <= 3) {
                 $scope.message = "Enjoy!";
             } else {
