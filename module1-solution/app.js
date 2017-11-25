@@ -1,4 +1,5 @@
-// Lunch Check
+// Lunch Check Application
+
 angular.module('LunchCheck',[ ])
 .controller('LunchCheckController', LunchCheckController);
 
@@ -6,15 +7,18 @@ LunchCheckController.$inject = ['$scope'];
 
 function LunchCheckController($scope){
     console.log('LunchCheckController');
-    $scope.message = null;
-    $scope.lunchList = null;
+    // initialize variables
+    $scope.message = "";
+    $scope.lunchList = "";
     $scope.checkIfTooMuch = checkIfTooMuch;
 
     function checkIfTooMuch() {
         
         var list = $scope.lunchList;
-
+        console.log(list);
         if (isValidEntry(list)) {
+            console.log(itemCount(list));
+
             if (itemCount(list) <= 3) {
                 $scope.message = "Enjoy!";
             } else {
@@ -28,13 +32,14 @@ function LunchCheckController($scope){
     }
     // Validate user input
     function isValidEntry(text){
-    
-        if (items) {
-            $scope.message = "";
-            return true;
-        } else {
+        // Check for empyt string
+
+        if (text == "") {
             $scope.message = "Please enter data first";
             return false;
+        } else {
+            $scope.message = "";
+            return true;
         }
     }
 
