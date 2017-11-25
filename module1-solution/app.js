@@ -42,11 +42,6 @@ function LunchCheckController($scope){
         }
     }
 
-
-
-
-    
-
 } // Controller
 
 
