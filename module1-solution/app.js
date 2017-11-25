@@ -1,29 +1,49 @@
 // Lunch Check
+angular.module('LunchCheck',[ ])
+.controller('LunchCheckController', LunchCheckController);
 
-(function() {
+LunchCheckController.$inject = ['$scope'];
 
-angular.module('LunchCheck',[])
-.conroller('LunchCheckController', LunchCheckController);
-
-LunchCheckController.$inject['$scope', '$filter'];
-
-function LunchCheckController($scope, $filter) {
+function LunchCheckController($scope){
     console.log('LunchCheckController');
-    $scope.message = "";
-    $scope.lunchItemsList = "";
-    $scope.validateEntry = validateEntry;
-    $scope.parseList = parseList;
+    $scope.message = null;
+    $scope.lunchList = null;
+    $scope.checkIfTooMuch = checkIfTooMuch;
 
-    function validateEntry() {
-        console.log('validate Entry');
+    function checkIfTooMuch() {
+        
+        var list = $scope.lunchList;
+
+        if (isValidEntry(list)) {
+            if (itemCount(list) <= 3) {
+                $scope.message = "Enjoy!";
+            } else {
+                $scope.message = "Too Much!";
+            }
+        }
     }
 
-    function parseList() {
-        console.log('parseList');
-
-
+    function itemCount(text) {
+        return text.split(",").length;
     }
+    // Validate user input
+    function isValidEntry(text){
+    
+        if (items) {
+            $scope.message = "";
+            return true;
+        } else {
+            $scope.message = "Please enter data first";
+            return false;
+        }
+    }
+
+
+
+
+    
 
 } // Controller
 
-})(); // IFEE
+
+
