@@ -26,6 +26,7 @@ function LunchCheckController($scope){
         // Get and validate user input
         var list = $scope.lunchList;
         if (isValidEntry(list)) {
+            // Valid input
             // used by ng-style for optional requirement
             $scope.messageStyle = {
                 'color': 'green',
@@ -40,6 +41,7 @@ function LunchCheckController($scope){
                 $scope.message = "Too Much!";
             }
         } else {
+            // Input is not valid
             // used by ng-style for optional requirement
             $scope.messageStyle = {
                 'color': 'red',
@@ -94,8 +96,6 @@ function LunchCheckController($scope){
             return true;
         }
     }
-
-   
 
 } // Controller
 
