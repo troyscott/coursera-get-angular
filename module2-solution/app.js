@@ -9,10 +9,13 @@ angular.module('ShoppingListCheckOff', [])
 function ShoppingListCheckOffService(){
     console.log('ShoppingListCheckOffService ...');
     var service = this;
+
     var toBuyItems = [
         {name: 'cookies', quantity: 10},
         {name: 'steaks', quantity: 3},
-        {name: 'muffins', quantity: 6}
+        {name: 'muffins', quantity: 6},
+        {name: 'apples', quantity: 2},
+        {name: 'candy canes', quantity: 12}
     ];
 
     var boughtItems = [];
@@ -34,18 +37,14 @@ function ShoppingListCheckOffService(){
         boughtItems.push(item);
     };
 
-    service.removeToBuyItems = function(index) {
-        
+    service.removeToBuyItems = function(index) {        
         toBuyItems.splice(index,1);
     }
-
-
 
 }  // Service
 
 
 /* To Buy Controller */
-
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
 
 function ToBuyController(ShoppingListCheckOffService) {
@@ -53,17 +52,11 @@ function ToBuyController(ShoppingListCheckOffService) {
     var service = ShoppingListCheckOffService;
     var buy = this;
     buy.items = service.getToBuyItems();
-    console.log(buy.items);
-
     buy.boughtItem = boughtItem;
 
     function boughtItem(name, quantity, index) {
-        console.log(name);
-        console.log(quantity);
-        console.log(index);
         service.removeToBuyItems(index);
         service.addBoughtItems(name, quantity);
-
 
     }
 }
@@ -77,7 +70,6 @@ function AlreadyBoughtController(ShoppingListCheckOffService){
     var service = ShoppingListCheckOffService;
     var bought = this;
     bought.items = service.getBoughtItems();
-
 
 }
 
